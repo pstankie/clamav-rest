@@ -16,7 +16,7 @@ FROM alpine:3.21
 COPY --from=build /go/src/clamav-rest/clamav-rest /usr/bin/
 
 # Update & Install tzdata
-RUN apk update && apk upgrade && apk add --no-cache tzdata
+RUN apk update && apk upgrade && apk add --no-cache tzdata curl
 
 # Enable Bash & logrotate
 RUN apk add bash logrotate
