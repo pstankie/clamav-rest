@@ -27,6 +27,8 @@ spec:
             - name: https
               containerPort: 9443
               protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
           - mountPath: /run/clamav
             name: run-dir
@@ -34,6 +36,8 @@ spec:
             name: clamav-data
           - mountPath: /clamav/etc
             name: clamav-etc
+          - mountPath: /clamav/tmp
+            name: tmp-dir
           - mountPath: /var/log/clamav
             name: log-dir
       volumes:
@@ -45,4 +49,6 @@ spec:
         name: run-dir
       - emptyDir: {}
         name: log-dir
+      - emptyDir: {}
+        name: tmp-dir
   

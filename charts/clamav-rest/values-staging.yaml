@@ -10,6 +10,15 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
+# following https://docs.clamav.net/manual/Installing/Docker.html guidelines
+resources:
+  requests:
+    cpu: 500m
+    memory: 3Gi
+  limits:
+    cpu: 1
+    memory: 4Gi
+
 route:
   timeout: 30s
 
@@ -19,15 +28,6 @@ service:
   targetPort: 9000
   port_tls: 9000
   targetPort: 9000
-
-resources: {}
-  # example:
-  # limits:
-  #   cpu: 500m
-  #   memory: 1Gi
-  # requests:
-  #   cpu: 250m
-  #   memory: 512Mi
 
 nodeSelector: {}
 tolerations: []
